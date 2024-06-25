@@ -56,12 +56,11 @@ export function login(email, password, navigate) {
       }
 
       toast.success("Login Successful")
-      dispatch(setToken(response.data.token));
-      dispatch(setUser(response.data.user));
-
+      dispatch(setToken(response.data.data.accessToken));
+      dispatch(setUser(response.data.data.user));
       const cookies = new Cookies();
-      cookies.set("token", response.data.token);
-      cookies.set("user", response.data.user);
+      cookies.set("token", response.data.data.accessToken);
+      cookies.set("user", response.data.data.user);
       navigate("/home")
     } catch (error) {
       console.log("LOGIN API ERROR............", error)
