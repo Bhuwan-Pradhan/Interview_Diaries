@@ -6,12 +6,13 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 
 const createInterview = asyncHandler(async (req, res) =>{
 
-    const {role, company, experience } = req.body
+    const {role, company, experience,type } = req.body
     const newInterview = new Interview({
       creator: req.user,
       role: role,
       company: company,
-      experience: experience
+      experience: experience,
+      type: type
     });
 
     await newInterview.save();
@@ -21,7 +22,7 @@ const createInterview = asyncHandler(async (req, res) =>{
 
 const getInterview = asyncHandler(async (req, res) =>{
 
-    const interviews = await Interview.find().populate('creator');
+    const interviews = await Interview.find().populate('creator').sort({ createdAt: -1 }).exec();
     return res
     .status(200)
     .json(

@@ -5,7 +5,7 @@ import Signup from "./pages/user/Signup";
 import HomePage from "./pages/HomePage";
 import LobbyScreen from "./pages/Interview/Lobby";
 import RoomPage from "./pages/Interview/Room";
-
+import InterviewFormPage from "./pages/FormPage";
 
 const App = () => {
   const { token } = useSelector((state) => state.auth);
@@ -19,6 +19,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/lobby" element={<LobbyScreen />} />
           <Route path="/room/:roomId" element={<RoomPage />} />
+          <Route path="/add-interview" element={<InterviewFormPage />} />
 
         </Routes>
       </div>
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/home" element={<HomePage />} />
           <Route path="/lobby" element={<LobbyScreen />} />
           <Route path="/room/:roomId" element={<RoomPage />} />
+          <Route path="/add-interview" component={InterviewFormPage} />
         </Routes>
       </div>
     );
